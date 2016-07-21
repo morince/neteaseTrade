@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.onlineTrade.dao.ProductDao">
+	<!-- 目的为dao接口方法提供SQL语句配置 -->
+	<!-- 发布产品 -->
+	<insert id="publish">
+		insert into
+		content(price,title,icon,abStract,text)
+		values(#{price},#{title},#{icon},#{abStract},#{text})
+	</insert>
+	<!-- 删除该商品 -->
+	<delete id="delete">
+		delete from content
+		where id = #{id}
+	</delete>
+	<!-- 查看页 -->
+	<select id="showDetail" resultType="Product">
+		select
+		c.id,c.price,c.title,c.icon,c.abStract,c.text,t.price,
+		t.number,t.number
+		from content c left join trx t on c.id = t.contentId
+		where c.id=#{id}
+	</select>
+	<select id="showAllDetail" resultType="Product">
+		select
+		c.id,c.price,c.title,c.icon,c.abStract,c.text,t.price,
+		t.number,t.number
+		from content c left join trx t on c.id = t.contentId
+
+	</select>
+	<select id="productQueryAll" resultType="Product">
+		select
+		id,price,title,icon,abStract,text
+		from content
+	</select>
+	<select id="productQueryByTitle" resultType="Product">
+		select
+		id,price,title,icon,abStract,text
+		from content
+		where title=#{title}
+	</select>
+	<select id="productQueryById" resultType="Product">
+		select
+		id,title,abStract,text,icon,price
+		from content
+		where id=#{contentId}
+	</select>
+	<select id="selectBypersonId" resultType="Product">
+		select
+		c.price,c.title,c.icon,c.abStract,c.text
+		from Content c inner join Trx
+		t on c.id=t.contentId
+	</select>
+	<!-- 用户购买商品 -->
+	<insert id="buy">
+		insert into Trx
+		(contentId,personId,price,number,time)
+		values(#{contentId},#{personId},#{price},#{number},#{time})
+	</insert>
+	<!-- 设置用户购买状态 -->
+	<update id="setbuyer">
+		update trx
+		set isBuyer = 1
+		where contentId =
+		#{contentId}
+	</update>
+	<update id="setseller">
+		update trx
+		set isSeller = 1
+		where contentId =
+		#{contentId}
+	</update>
+	<select id="trxQuery" resultType="Trx">
+		select id,contentId,
+		personId,price
+		,number,time
+		from trx
+	</select>
+
+	<!-- id; contentId; personId; price; time; -->
+	<select id="queryTrxByUserId" resultType="Trx">
+		select c.id,
+		c.title,
+		c.icon,
+		t.price as buyPrice,
+		t.number as buyNum,
+		t.time as buyTime
+		from content c
+		left join trx t on
+		c.id = t.contentId
+		where personId=
+		#{personId}
+	</select>
+	<select id="productList" resultType="Product">
+		select c.id,
+		c.title,
+		c.icon,
+		c.price,
+		t.isBuyer,
+		t.isSeller
+		from Content c
+		left join Trx t on
+		c.id = t.contentId
+	</select>
+
+	<select id="queryTrx" resultType="Trx">
+		select contentId, price
+		,number,time
+		from trx
+		order by
+		time desc
+		limit #{offset} ,#{limit}
+
+	</select>
+
+
+
+
+</mapper>
