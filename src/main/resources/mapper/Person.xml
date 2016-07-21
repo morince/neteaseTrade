@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.onlineTrade.dao.UserValidateDao">
+	<!-- 目的为DAO接口方法提供SQL语句配置 -->
+	<!-- A query was run and no Result Maps were found for the Mapped Statement 
+		'com.onlineTrade.dao.UserValidateDao.loginVerify'. It's likely that neither 
+		a Result Type nor a Result Map was specified. -->
+	<!-- 简单验证用户信息 -->
+	<select id="loginVerify" resultType="Person">
+		<!-- 具体SQL语句 -->
+		select
+		userName,
+		password
+		from
+		Person
+		where username = #{userName}
+		and
+		password = #{password}
+	</select>
+
+	<!-- 获取用户所有信息 -->
+	<select id="getUserInfo" resultType="Person">
+		<!-- 具体SQL语句 -->
+		select
+		id,
+		userName,
+		nickName,
+		userType
+		from
+		Person
+		where username =
+		#{userName}
+	</select>
+</mapper>
