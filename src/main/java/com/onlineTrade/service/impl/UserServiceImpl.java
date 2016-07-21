@@ -2,11 +2,12 @@ package com.onlineTrade.service.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.onlineTrade.dao.UserValidateDao;
 import com.onlineTrade.entity.Person;
 import com.onlineTrade.service.UserService;
-
+@Service
 public class UserServiceImpl implements UserService {
 	
 @Autowired

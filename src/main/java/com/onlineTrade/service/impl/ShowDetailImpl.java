@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import com.onlineTrade.dao.ProductDao;
 import com.onlineTrade.entity.Product;
 import com.onlineTrade.entity.Trx;
 import com.onlineTrade.service.ShowPage;
-
+@Service
 public class ShowDetailImpl implements ShowPage{
 	@Resource
 	private ProductDao pdao;

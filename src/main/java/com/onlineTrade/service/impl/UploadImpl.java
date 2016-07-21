@@ -6,10 +6,11 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineTrade.service.UploadService;
-
+@Service
 public class UploadImpl implements UploadService {
 	
 	private MultipartFile file;
