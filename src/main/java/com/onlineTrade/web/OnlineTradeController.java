@@ -153,8 +153,9 @@ public class OnlineTradeController {
 		model.addAttribute("product", pdao.productQueryByTitle(title));
 		if (model != null) {
 			return "editSubmit";
-		}
-		return "edit";
+		}else{
+			return "edit";
+			}
 	}
 
 	// 文件上传
@@ -192,8 +193,5 @@ public class OnlineTradeController {
 		return "show";
 	}
 	
-	@RequestMapping(value="/",method=RequestMethod.GET)
-	public String loginInfo(){
-		return "Error";
-	}
+
 }
