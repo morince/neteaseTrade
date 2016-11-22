@@ -9,6 +9,7 @@ import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
@@ -148,7 +149,7 @@ public class OnlineTradeserviceImpl implements OnlineTradeService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(value= "txManager" ,propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public int delete(Integer id) {
 		return dao.delete(id);
 	}
