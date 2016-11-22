@@ -14,7 +14,7 @@
 		userName,
 		password
 		from
-		Person
+		person
 		where username = #{userName}
 		and
 		password = #{password}
@@ -29,7 +29,7 @@
 		nickName,
 		userType
 		from
-		Person
+		person
 		where username =
 		#{userName}
 	</select>
