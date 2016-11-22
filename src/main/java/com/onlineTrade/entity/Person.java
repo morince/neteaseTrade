@@ -1,8 +1,6 @@
 package com.onlineTrade.entity;
 
-import org.springframework.stereotype.Component;
 
-@Component
 public class Person {
 	private int id;
 	private String userName;
