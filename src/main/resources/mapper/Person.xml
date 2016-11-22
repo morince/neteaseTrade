@@ -15,7 +15,7 @@
 		password
 		from
 		person
-		where username = #{userName}
+		where userName = #{userName}
 		and
 		password = #{password}
 	</select>
@@ -30,7 +30,7 @@
 		userType
 		from
 		person
-		where username =
+		where userName =
 		#{userName}
 	</select>
 </mapper>
