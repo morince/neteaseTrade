@@ -260,7 +260,7 @@ public class OnlineTradeController {
 			@RequestParam("summary") String summary, @RequestParam("detail") String detail,
 			@RequestParam("price") long price, @RequestParam("image") String url, Model model) {
 		JSONObject jsonObj = new JSONObject();
-		jsonObj = onlineService.publicSubmit(title, detail, detail, price, summary, url);
+		jsonObj = onlineService.editSubmit(id,title, detail, detail, price, summary, url);
 		model.addAttribute("product", jsonObj);
 		return "editSubmit";
 	}
